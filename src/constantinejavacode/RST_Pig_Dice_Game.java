@@ -1,12 +1,13 @@
 package constantinejavacode;
-
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
 import java.awt.Color;
-import javax.swing.JLabel;
+import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 public class RST_Pig_Dice_Game {
@@ -15,7 +16,11 @@ public class RST_Pig_Dice_Game {
 	private JTextField Player1_Field;
 	private JTextField Player2_Field;
 	private JTextField Winner_Field;
-
+	private JTextField ScoreField_1;
+	private JTextField ScoreField_2;
+	
+	int score=0;
+	
 	/**
 	 * Launch the application.
 	 */
@@ -55,6 +60,34 @@ public class RST_Pig_Dice_Game {
 		frame.getContentPane().add(lblNewLabel);
 		
 		JButton ROLL_1 = new JButton("ROLL");
+		ROLL_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//Button Code Start
+				
+				//Variables
+				int random;
+				int prevRoll;
+				int Score = 0;
+				int NewScore;
+				int Points=0;
+				
+				
+				//Process
+				random = (int)Math.round(Math.random() *5+1);
+				 Score=Score+random;
+				 Points= Points+Score;
+				//Output
+				Player1_Field.setText(Integer.toString(random));
+				
+				ScoreField_1.setText(Integer.toString(Points));
+				 
+				 
+				
+				
+				
+						
+			}
+		});
 		ROLL_1.setBounds(10, 224, 89, 23);
 		frame.getContentPane().add(ROLL_1);
 		
@@ -63,6 +96,25 @@ public class RST_Pig_Dice_Game {
 		frame.getContentPane().add(HOLD_1);
 		
 		JButton ROLL_2 = new JButton("ROLL");
+		ROLL_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//Button Code Start
+				
+				//Variables
+				int diceRoll;
+				int Score;
+				
+				//Process
+				diceRoll = (int)Math.round(Math.random() *5+1) ;
+				Score=diceRoll;
+				
+				//Output
+				
+				 
+				 
+				 Player2_Field.setText(Integer.toString(Score));
+			}
+		});
 		ROLL_2.setBounds(299, 224, 89, 23);
 		frame.getContentPane().add(ROLL_2);
 		
@@ -71,17 +123,17 @@ public class RST_Pig_Dice_Game {
 		frame.getContentPane().add(HOLD_2);
 		
 		Player1_Field = new JTextField();
-		Player1_Field.setBounds(59, 294, 86, 20);
+		Player1_Field.setBounds(59, 258, 86, 20);
 		frame.getContentPane().add(Player1_Field);
 		Player1_Field.setColumns(10);
 		
 		Player2_Field = new JTextField();
 		Player2_Field.setColumns(10);
-		Player2_Field.setBounds(355, 294, 86, 20);
+		Player2_Field.setBounds(357, 258, 86, 20);
 		frame.getContentPane().add(Player2_Field);
 		
 		JLabel lblNewLabel_1 = new JLabel("PLAYER 1");
-		lblNewLabel_1.setBounds(83, 180, 46, 14);
+		lblNewLabel_1.setBounds(59, 180, 70, 14);
 		frame.getContentPane().add(lblNewLabel_1);
 		
 		JLabel lblNewLabel_1_1 = new JLabel("PLAYER 2");
@@ -98,6 +150,18 @@ public class RST_Pig_Dice_Game {
 		frame.getContentPane().add(lblNewLabel_2);
 		
 		JButton btnNewButton = new JButton("CLEAR");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//Button Code Start
+				
+				Player1_Field.setText("");
+				Player2_Field.setText("");
+				Winner_Field.setText("");
+				
+				
+				//Button Code End
+			}
+		});
 		btnNewButton.setBounds(209, 356, 89, 23);
 		frame.getContentPane().add(btnNewButton);
 		
@@ -108,5 +172,15 @@ public class RST_Pig_Dice_Game {
 		JLabel lblNewLabel_2_1_1 = new JLabel("If you roll a one, your turn ends and all the points you got that turn are void");
 		lblNewLabel_2_1_1.setBounds(32, 90, 431, 50);
 		frame.getContentPane().add(lblNewLabel_2_1_1);
+		
+		ScoreField_1 = new JTextField();
+		ScoreField_1.setColumns(10);
+		ScoreField_1.setBounds(59, 309, 86, 20);
+		frame.getContentPane().add(ScoreField_1);
+		
+		ScoreField_2 = new JTextField();
+		ScoreField_2.setColumns(10);
+		ScoreField_2.setBounds(357, 309, 86, 20);
+		frame.getContentPane().add(ScoreField_2);
 	}
 }
