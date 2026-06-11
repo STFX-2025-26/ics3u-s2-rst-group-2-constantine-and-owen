@@ -11,6 +11,17 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 public class RST_Pig_Dice_Game {
+	int random=0;
+	int prevRoll=0;
+	int Score = 0;
+	int NewScore=0;
+	int Points=0;
+	
+	int random2=0;
+	int prevRoll2=0;
+	int Score2 = 0;
+	int NewScore2=0;
+	int Points2=0;
 
 	private JFrame frame;
 	private JTextField Player1_Field;
@@ -64,27 +75,25 @@ public class RST_Pig_Dice_Game {
 			public void actionPerformed(ActionEvent e) {
 				//Button Code Start
 				
-				//Variables
-				int random;
-				int prevRoll;
-				int Score = 0;
-				int NewScore;
-				int Points=0;
+				
+
 				
 				
 				//Process
 				random = (int)Math.round(Math.random() *5+1);
 				 Score=Score+random;
-				 Points= Points+Score;
+				 Points=Score;
+				 
 				//Output
 				Player1_Field.setText(Integer.toString(random));
 				
 				ScoreField_1.setText(Integer.toString(Points));
 				 
-				 
+				if (Points > 99) {
+					Winner_Field.setText("Player 1 Wins");
 				
 				
-				
+				}
 						
 			}
 		});
@@ -100,20 +109,18 @@ public class RST_Pig_Dice_Game {
 			public void actionPerformed(ActionEvent e) {
 				//Button Code Start
 				
-				//Variables
-				int diceRoll;
-				int Score;
-				
 				//Process
-				diceRoll = (int)Math.round(Math.random() *5+1) ;
-				Score=diceRoll;
-				
+				random2 = (int)Math.round(Math.random() *5+1);
+				 Score2=Score2+random2;
+				 Points2=Score2;
 				//Output
+				Player2_Field.setText(Integer.toString(random2));
 				
-				 
-				 
-				 Player2_Field.setText(Integer.toString(Score));
-			}
+				ScoreField_2.setText(Integer.toString(Points2));
+				
+				if (Points2 > 99) {
+					Winner_Field.setText("Player 2 Wins");
+			}}
 		});
 		ROLL_2.setBounds(299, 224, 89, 23);
 		frame.getContentPane().add(ROLL_2);
@@ -157,6 +164,9 @@ public class RST_Pig_Dice_Game {
 				Player1_Field.setText("");
 				Player2_Field.setText("");
 				Winner_Field.setText("");
+				ScoreField_1.setText("");
+				ScoreField_2.setText("");
+				System.exit(0);
 				
 				
 				//Button Code End
